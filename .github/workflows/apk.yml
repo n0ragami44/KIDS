@@ -3,6 +3,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,11 +25,23 @@ jobs:
           npm i @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           npx cap init "Clo Warna" com.n0ragami44.clowarna --web-dir www
           npx cap add android
+          sed -i "s/versionCode 1/versionCode ${{ github.run_number }}/; s/versionName \"1.0\"/versionName \"1.0.${{ github.run_number }}\"/" android/app/build.gradle
           npx cap sync android
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
-      - uses: actions/upload-artifact@v4
+          ./gradlew assembleRelease
+      - name: Tanda tangani
+        env:
+          KS_B64: ${{ secrets.KEYSTORE_B64 }}
+          KS_PASS: ${{ secrets.KEYSTORE_PASS }}
+        run: |
+          echo "$KS_B64" | base64 -d > clo.jks
+          BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
+          cd android/app/build/outputs/apk/release
+          $BT/zipalign -p 4 app-release-unsigned.apk aligned.apk
+          $BT/apksigner sign --ks $GITHUB_WORKSPACE/clo.jks --ks-pass env:KS_PASS --ks-key-alias clo --key-pass env:KS_PASS --out $GITHUB_WORKSPACE/clo-warna.apk aligned.apk
+      - uses: softprops/action-gh-release@v2
         with:
-          name: clo-warna-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          tag_name: v${{ github.run_number }}
+          name: Clo Warna v${{ github.run_number }}
+          files: clo-warna.apk
