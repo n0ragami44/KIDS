@@ -1,0 +1,13 @@
+{
+  "name": "Clo Warna",
+  "short_name": "Clo Warna",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#DFF1FF",
+  "theme_color": "#DFF1FF",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
