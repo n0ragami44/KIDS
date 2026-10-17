@@ -80,3 +80,22 @@ body[data-tab=garis] #mode,body[data-tab=garis] #ukuran,body[data-tab=garis] #hi
 #hidup.siap{animation:siap .7s ease-in-out infinite;background:#FFB703}
 @keyframes siap{50%{transform:scale(1.2)}}
 @media (prefers-reduced-motion:reduce){.ekor,.kepak,.kedip,.pulsa,.mata,.kumis,.napas,.lompat{animation:none}}
+
+/* ---- Pilih umur ---- */
+.sapu{stroke-width:var(--kuas,26)}
+#umur{position:fixed;inset:0;z-index:10;background:var(--langit);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:18px;padding:24px}
+#umur[hidden]{display:none}
+#umur h1{margin:0 0 6px;font-size:30px;color:var(--garis)}
+#umur button{width:min(86vw,360px);height:auto;min-height:150px;border-radius:36px;font-size:26px;
+  display:grid;gap:6px;place-items:center;padding:18px;background:#FFE066}
+#umur button span{font-size:56px}
+#umur button.b2{background:#9AE6B4}
+#gantiumur{grid-column:1/-1;width:auto;height:auto;border:0;background:none;box-shadow:none;
+  font-size:12px;color:var(--garis);opacity:.55;border-radius:12px;padding:4px 10px;justify-self:center}
+body[data-umur=kecil] #mode,body[data-umur=kecil] #ukuran{display:none}
+body[data-umur=kecil] .bar button{width:64px;height:64px;font-size:28px}
+body[data-umur=kecil] #palet{grid-template-columns:repeat(3,76px);gap:14px 20px}
+body[data-umur=kecil] #palet button.w{width:76px;height:76px}
+body[data-umur=jago] .bar{gap:6px}
+body[data-umur=jago] .bar button{width:48px;height:48px;font-size:20px;border-width:4px}

@@ -20,7 +20,7 @@ jobs:
       - name: Bangun APK
         run: |
           mkdir www
-          cp index.html app.js style.css manifest.json sw.js icon.svg www/
+          cp index.html app.js umur.js garis.js hidup.js style.css manifest.json sw.js icon.svg www/
           npm init -y
           npm i @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           npx cap init "Clo Warna" com.n0ragami44.clowarna --web-dir www
