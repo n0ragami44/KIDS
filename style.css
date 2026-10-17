@@ -35,3 +35,22 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--garis)}
 #palet{display:grid;grid-template-columns:repeat(4,56px);justify-content:center;gap:12px 16px;padding:8px 12px 16px}
 #palet button[aria-pressed="true"]{transform:translateY(-6px) scale(1.12);border-color:#7C5CFF;box-shadow:0 7px 0 var(--garis)}
 @media (prefers-reduced-motion:reduce){g.area.goyang,svg.hidup g.area{animation:none}}
+
+/* ---- Tarik garis ---- */
+body{grid-template-rows:auto auto 1fr auto}
+#tab{display:flex;justify-content:center;gap:10px;padding:2px 8px 8px}
+#tab button{width:auto;height:48px;border-radius:24px;padding:0 20px;font-size:20px;background:#fff;box-shadow:0 3px 0 var(--garis)}
+#tab button[aria-pressed="true"]{background:#FFE066;transform:translateY(2px);box-shadow:0 1px 0 var(--garis)}
+body[data-tab=garis] #mode,body[data-tab=garis] #ukuran,body[data-tab=garis] #hidup,body[data-tab=garis] #palet{display:none}
+.pop,.senang,.denyut{transform-box:fill-box;transform-origin:center}
+.pop{animation:popbintang .5s ease-out forwards}
+@keyframes popbintang{0%{transform:scale(1)}40%{transform:scale(2)}100%{transform:scale(0);opacity:0}}
+.denyut{animation:denyut 1.2s ease-in-out infinite}
+@keyframes denyut{0%,100%{transform:scale(.8);opacity:.9}50%{transform:scale(1.25);opacity:.35}}
+.senang{animation:senang .6s ease-in-out 3}
+@keyframes senang{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-16px) rotate(-12deg)}70%{transform:translateY(-6px) rotate(12deg)}}
+.konfeti{animation:terbang 1.2s ease-out forwards}
+@keyframes terbang{from{transform:translate(0,0);opacity:1}to{transform:translate(var(--dx),var(--dy));opacity:0}}
+.hebat{font-weight:900;fill:#2A2550;stroke:#fff;stroke-width:8;paint-order:stroke;transform-box:fill-box;transform-origin:center;animation:muncul .5s ease-out both}
+@keyframes muncul{from{transform:scale(.2);opacity:0}to{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.denyut,.senang{animation:none}}
