@@ -10,15 +10,14 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main id="stage" aria-label="Gambar"></main>
-<div class="side">
+<header class="bar">
+  <button id="prev" aria-label="Gambar sebelumnya">◀</button>
+  <button id="mode" aria-label="Ganti cara mewarnai">🖌️</button>
   <button id="hidup" aria-label="Hidupkan gambar">★</button>
   <button id="ulang" aria-label="Hapus warna">↺</button>
-</div>
-<nav class="pager">
-  <button id="prev" aria-label="Gambar sebelumnya">◀</button>
   <button id="next" aria-label="Gambar berikutnya">▶</button>
-</nav>
+</header>
+<main id="stage" aria-label="Gambar"></main>
 <footer id="palet" aria-label="Pilih warna"></footer>
 <script src="app.js"></script>
 </body>

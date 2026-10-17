@@ -25,6 +25,9 @@ jobs:
           npm i @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
           npx cap init "Clo Warna" com.n0ragami44.clowarna --web-dir www
           npx cap add android
+          S=android/app/src/main/res/values/styles.xml
+          sed -i 's|<item name="windowNoTitle">true</item>|&\n        <item name="android:statusBarColor">#DFF1FF</item>\n        <item name="android:navigationBarColor">#DFF1FF</item>\n        <item name="android:windowLightStatusBar">true</item>\n        <item name="android:windowLightNavigationBar">true</item>|' $S
+          grep -q statusBarColor $S || { echo "styles.xml tidak cocok"; cat $S; exit 1; }
           sed -i "s/versionCode 1/versionCode ${{ github.run_number }}/; s/versionName \"1.0\"/versionName \"1.0.${{ github.run_number }}\"/" android/app/build.gradle
           npx cap sync android
           cd android
