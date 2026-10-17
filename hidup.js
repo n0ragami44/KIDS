@@ -88,6 +88,7 @@
     bel: () => { bip(784, 784, .5, 'sine', .2, 0); bip(622, 622, .7, 'sine', .2, .4); }
   };
   const bunyiHewan = j => SUARA[j] && SUARA[j]();
+  window.HIDUP = { CONFIG, BOLEH, SUARA, bip, bersih };
 
   function ucap() {
     if (!H) return;
