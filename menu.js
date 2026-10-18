@@ -123,6 +123,7 @@
     CONFIG[i] = c; KAT[k].push(i);
   }));
 
+  HIDUP.KAT = KAT;
   // ---- Menu pilih kategori (khusus Si Kecil)
   const m = document.createElement('div');
   m.id = 'kategori'; m.hidden = true;
