@@ -132,3 +132,11 @@ body[data-umur=kecil] .bar button{width:58px;height:58px;font-size:26px}
 
 /* ---- Gambar dari aset (garis halus + area warna) ---- */
 .foto .a,.foto .garis{stroke:none}
+
+/* ---- Perbaikan: warna tidak bergeser dari garis, efek isi warna dihaluskan ---- */
+g.area.goyang{animation:goyanglembut .5s ease-in-out}
+@keyframes goyanglembut{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.foto g.area.goyang{animation:none}
+.a{transition:fill .35s ease}
+#palet button{transition:transform .2s ease,box-shadow .2s ease}
+#palet button.w[aria-pressed="true"]{transform:translateY(-4px) scale(1.08)}
